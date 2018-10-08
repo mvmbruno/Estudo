@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,10 +6,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import FolderIcon from '@material-ui/icons/Folder';
-import FileIcon from '@material-ui/icons/InsertDriveFile';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 const CustomTableCell = withStyles(theme => ({
@@ -97,9 +92,9 @@ class Folders extends React.Component {
           {data.map(n => {
             return (
               <TableRow key={n.id}>
-                <Button><CustomTableCell component="th" scope="row">{n.name}</CustomTableCell>
+                <CustomTableCell component="th" scope="row">{n.name}</CustomTableCell>
                 <CustomTableCell>{n.space}</CustomTableCell>
-                <CustomTableCell>{n.date}</CustomTableCell></Button>
+                <CustomTableCell>{n.date}</CustomTableCell>
               </TableRow>
             );
           })}

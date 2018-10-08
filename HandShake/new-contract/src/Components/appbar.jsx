@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,7 +12,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#266180',
-      contrastText: '#ffffff'
+      contrastText: '#ffffff', 
     },
     secondary: {
       light: '#0066ff',

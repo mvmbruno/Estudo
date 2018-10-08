@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ContractIcon from '@material-ui/icons/InsertDriveFile.js';
 import PolymerIcon from '@material-ui/icons/Polymer';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 
 function TabContainer({ children, dir }) {
@@ -24,6 +25,26 @@ TabContainer.propTypes = {
   dir: PropTypes.string.isRequired,
 };
 
+const modal = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#006400',
+      contrastText: '#ffffff', 
+    },
+    secondary: {
+      light: '#144a66',
+      main: '#144a66',
+      contrastText: '#144a66',
+      
+    },
+    inherit: {
+      light: '#0066ff',
+      main: '#0066ff',
+      contrastText: '#000000',
+    },
+  },
+});
+
 const styles = theme => ({
     root: {
       backgroundColor: theme.palette.background.paper,
@@ -38,6 +59,9 @@ const styles = theme => ({
     topIcon: {
       marginTop: theme.spacing.unit,
     },
+    botao: {
+      marginTop: theme.spacing.unit*2,
+    }
 
 });
 
@@ -59,12 +83,13 @@ class FullWidthTabs extends React.Component {
 
     return (
       <div className={classes.root}>
+        <MuiThemeProvider theme = {modal}>
         <AppBar position="static" color="default">
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="inherit"
+            indicatorColor="secondary"
+            textColor="secondary"
             fullWidth
           >
             <Tab label="Criar modelo" />
@@ -78,51 +103,60 @@ class FullWidthTabs extends React.Component {
         >
           <TabContainer dir={theme.direction}>
             <div className={classes.items}>
-                <ContractIcon style={{ fontSize: 100 }}/>
+                <ContractIcon color="secondary" style={{ fontSize: 100 }}/>
                 <Typography 
                 variant="title" 
-                id="simple-modal-description">
+                id="simple-modal-description"
+                color="secondary">
                 Enviando documentos similares?
                 </Typography>
                 <Typography 
-                variant="body1">
+                variant="body1"
+                color="secondary">
                 Economize tempo criando modelos com campos 
                 </Typography>
                 <Typography 
-                variant="body1">
+                variant="body1"
+                color="secondary">
                 pré-definidos assinatura criptográfica
                 </Typography>
                 <Button 
-                className='botao' 
-                variant="contained">
-                Novo Documento
+                className={classes.botao} 
+                variant="contained"
+                color="primary">
+                Criar novo modelo
                 </Button>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div className={classes.items}>
-                    <PolymerIcon style={{ fontSize: 100 }}/>
+                    <PolymerIcon color="secondary" style={{ fontSize: 100 }}/>
                     <Typography 
                     variant="title" 
-                    id="simple-modal-description">
+                    id="simple-modal-description"
+                    color="secondary">
                     Arraste e solte os arquivos aqui
                     </Typography>
                     <Typography 
-                    variant="body1">
+                    variant="body1"
+                    color="secondary">
                     Economize tempo criando modelos com campos 
                     </Typography>
                     <Typography 
-                    variant="body1">
+                    variant="body1"
+                    color="secondary">
                     pré-definidos assinatura criptográfica
                     </Typography>
                     <Button 
-                    className='botao' 
-                    variant="contained">
+                    className={classes.botao}  
+                    variant="contained"
+                    color="primary">
                     Selecione arquivo para upload
                     </Button>
                 </div>
           </TabContainer>
         </SwipeableViews>
+        </MuiThemeProvider>
       </div>
     );
   }
